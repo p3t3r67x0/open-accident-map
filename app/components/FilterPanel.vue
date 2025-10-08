@@ -205,7 +205,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref, withDefaults } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import type { AccidentDetail, AccidentFilters, MetaMap, DistrictOption } from '@/types/accident'
 
 const props = withDefaults(defineProps<{

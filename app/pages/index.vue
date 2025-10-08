@@ -27,17 +27,17 @@
       </div>
     </div>
     <footer class="site-footer text-sm">
-      <a class="inline-block text-gray-600 hover:text-gray-900 focus:text-gray-900" href="/impressum.html">
+      <NuxtLink class="inline-block text-gray-600 hover:text-gray-900 focus:text-gray-900" to="/impressum">
         Impressum
-      </a>
+      </NuxtLink>
       <span class="inline-block text-gray-600 px-3">|</span>
-      <a class="inline-block text-gray-600 hover:text-gray-900 focus:text-gray-900" href="/impressum.html#privacypolicy">
+      <NuxtLink class="inline-block text-gray-600 hover:text-gray-900 focus:text-gray-900" to="/impressum#privacypolicy">
         Datenschutzerklärung
-      </a>
+      </NuxtLink>
       <span class="inline-block text-gray-600 px-3">|</span>
-      <a class="inline-block text-gray-600 hover:text-gray-900 focus:text-gray-900" href="/lizenz.html">
+      <NuxtLink class="inline-block text-gray-600 hover:text-gray-900 focus:text-gray-900" to="/lizenz">
         Lizenz
-      </a>
+      </NuxtLink>
     </footer>
   </div>
 </template>
