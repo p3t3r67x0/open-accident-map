@@ -507,7 +507,11 @@ const initialiseMap = async () => {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="dc:rights">OpenStreetMap</a> contributors'
     }).addTo(map)
 
-    accidentData = await fetch('/data/flensburg_details.geojson').then((res) => res.json())
+    accidentData = await fetch('https://api.oklabflensburg.de/accident/v1/details?query=Flensburg', {
+      headers: {
+        Accept: 'application/json',
+      },
+    }).then((res) => res.json())
 
     if (props.districts?.length) {
       setupDistrictLayer()

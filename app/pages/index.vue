@@ -56,7 +56,42 @@ const filters = ref<AccidentFilters>({
 
 const selectedDetails = ref<AccidentDetail[]>([])
 
-const { data: metaData } = useFetch<MetaMap>('/data/meta.json', { server: false })
+const { data: metaData } = useAsyncData<MetaMap>('accident-meta', async () => {
+  const response = await $fetch<any[]>('https://api.oklabflensburg.de/accident/v1/meta', {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json',
+    },
+  })
+
+  const grouped: Record<string, { id: number; name: string }[]> = {}
+
+  if (Array.isArray(response)) {
+    for (const entry of response) {
+      const category = entry?.category
+      const value = Number(entry?.value)
+      const name = String(entry?.name ?? '')
+
+      if (!category || Number.isNaN(value) || !name) {
+        continue
+      }
+
+      if (!grouped[category]) {
+        grouped[category] = []
+      }
+
+      grouped[category].push({ id: value, name })
+    }
+
+    for (const key of Object.keys(grouped)) {
+      grouped[key].sort((a, b) => a.name.localeCompare(b.name, 'de'))
+    }
+  }
+
+  return grouped
+}, {
+  server: false,
+})
 const { data: districtData } = useFetch<FeatureCollection<Polygon | MultiPolygon, DistrictProperties>>('/data/flensburg_stadtteile.geojson', { server: false })
 
 const districtFeatures = computed<Feature[]>(() => {
