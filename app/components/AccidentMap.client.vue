@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref, watch, withDefaults } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import type {
   AccidentDetail,
   AccidentFilters,
@@ -502,10 +502,9 @@ const initialiseMap = async () => {
       maxZoom: 19,
     }).setView([54.7836, 9.4121], 2)
 
-    leaflet.tileLayer.wms('https://sgx.geodatenzentrum.de/wms_basemapde?SERVICE=WMS&Request=GetCapabilities', {
-      layers: 'de_basemapde_web_raster_grau',
-      maxZoom: 20,
-      attribution: '<a href="https://www.bkg.bund.de">© GeoBasis-DE / BKG 2024</a> | <a href="https://creativecommons.org/licenses/by/4.0">CC BY 4.0</a>',
+    leaflet.tileLayer('https://tiles.oklabflensburg.de/sgm/{z}/{x}/{y}.png', {
+        maxZoom: 20,
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="dc:rights">OpenStreetMap</a> contributors'
     }).addTo(map)
 
     accidentData = await fetch('/data/flensburg_details.geojson').then((res) => res.json())
