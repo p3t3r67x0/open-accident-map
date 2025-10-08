@@ -2,13 +2,21 @@
 
 Offene Daten der Unfallstatistik des BKG auf einer interaktiven webbasierten Karte
 
+## Development
+
+```bash
+pnpm install
+pnpm dev
+```
+
+The Nuxt 3 frontend loads the bundled GeoJSON and meta data from `public/data`.  
+Place additional municipalities in that directory or expose them via an API and adjust the fetch calls inside `components/AccidentMap.client.vue`.
 
 ## Warning
 
 [Demo beta](https://beta.open-accident-map.de/query/flensburg)
 
-This version of our interactive map is based on Nuxt 3 and OpenLayers and has
-breaking changes. Please be aware using this beta version on your own risk.
+The current beta refactor is based on Nuxt 3 and Leaflet. Expect breaking changes while the project evolves.
 
 
 ## Setup System

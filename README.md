@@ -38,6 +38,10 @@ psql -U oklab -h localhost -d oklab -p 5432 < data/de_accident_meta_schema.sql
 Since November 2024, new table names and structures are used.
 
 ```sh
+wget https://www.opengeodata.nrw.de/produkte/transport_verkehr/unfallatlas/Unfallorte2024_EPSG25832_Shape.zip
+unzip Unfallorte2024_EPSG25832_Shape.zip
+ogr2ogr -f "PostgreSQL" PG:"host=localhost port=5432 dbname=oklab user=oklab" -lco GEOMETRY_NAME=geom -lco SPATIAL_INDEX=GIST -lco PRECISION=YES -nlt POINT -append -nln de_accident_points -s_srs shp/Unfallorte_2024_LR_BasisDLM.prj -t_srs EPSG:4326 shp/Unfallorte_2024_LR_BasisDLM.shp 
+
 wget https://www.opengeodata.nrw.de/produkte/transport_verkehr/unfallatlas/Unfallorte2023_EPSG25832_Shape.zip
 unzip Unfallorte2023_EPSG25832_Shape.zip
 ogr2ogr -f "PostgreSQL" PG:"host=localhost port=5432 dbname=oklab user=oklab" -lco GEOMETRY_NAME=geom -lco SPATIAL_INDEX=GIST -lco PRECISION=YES -nlt POINT -append -nln de_accident_points -s_srs shp/Unfallorte_2023_LR_BasisDLM.prj -t_srs EPSG:4326 shp/Unfallorte_2023_LR_BasisDLM.shp
@@ -71,6 +75,14 @@ unzip Unfallorte2016_EPSG25832_Shape.zip
 ogr2ogr -f "PostgreSQL" PG:"host=localhost port=5432 dbname=oklab user=oklab" -lco GEOMETRY_NAME=geom -lco SPATIAL_INDEX=GIST -lco PRECISION=YES -nlt POINT -append -nln de_accident_points -s_srs Shapefile/Unfaelle_2016_LinRef.prj -t_srs EPSG:4326 Shapefile/Unfaelle_2016_LinRef.shp
 ```
 
+
+## Convert Shapefile
+
+Here is an example how to convert the Shapefile to geoJSON.
+
+```bash
+ogr2ogr -f GeoJSON -s_srs shp/Unfallorte_2024_LR_BasisDLM.prj -t_srs EPSG:4326 accidents_2024.geojson shp/Unfallorte_2024_LR_BasisDLM.shp
+```
 
 ---
 
