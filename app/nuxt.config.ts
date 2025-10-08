@@ -1,4 +1,11 @@
+const scriptNonce = process.env.NUXT_INLINE_SCRIPT_NONCE || 'nonce1234'
+
 export default defineNuxtConfig({
+  runtimeConfig: {
+    public: {
+      scriptNonce,
+    },
+  },
   modules: [
     '@nuxtjs/tailwindcss',
   ],
@@ -8,7 +15,7 @@ export default defineNuxtConfig({
   ],
   app: {
     head: {
-      title: 'Open Accident Map',
+      title: 'Unfallkarte Flensburg',
       meta: [
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         {
@@ -17,6 +24,7 @@ export default defineNuxtConfig({
           content: 'Interaktive Karte mit Verkehrsunfällen in Flensburg',
         },
       ],
+      ...(scriptNonce ? { nonce: scriptNonce } : {}),
     },
   },
 })
