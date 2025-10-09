@@ -27,7 +27,7 @@
       @touchend.stop="onTouchEnd"
     >
       <div class="py-2 px-3">
-        <h1 class="text-2xl md:text-3xl font-bold">Unfallkarte 2023</h1>
+        <h1 class="text-2xl md:text-3xl font-bold">Unfallkarte 2024</h1>
         <h2 class="text-xl md:text-2xl mb-2 md:mb-4">Stadtplan für Flensburg</h2>
       </div>
 
@@ -223,12 +223,12 @@ const emit = defineEmits<{
 
 const districtOptions = computed(() => props.districts ?? [])
 
-const yearOptions = ['2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023']
+const yearOptions = ['2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024']
 
 const yearRows = computed(() => [
   yearOptions.slice(0, 3),
   yearOptions.slice(3, 6),
-  yearOptions.slice(6, 8),
+  yearOptions.slice(6, 9),
 ])
 
 const updateFilters = (patch: Partial<AccidentFilters>) => {
