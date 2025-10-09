@@ -1,8 +1,8 @@
-# Unfallkarte Deutschland
+# Unfallkarte
 
 > Map mit Verkehrsunfällen mit Personenschaden im Zeitraum 2016 - 2023 mit Daten der Statistischen Ämter des Bundes und der Länder sowie des BKG aktualisiert. Unfälle, bei denen nur Sachschaden entsteht, werden nicht dargestellt.
 
-![Screenshot Unfallkarte](https://raw.githubusercontent.com/oklabflensburg/open-accident-map/main/screenshot_unfallkarte.jpg)
+![Screenshot Unfallkarte](https://raw.githubusercontent.com/oklabflensburg/open-accident-map/main/screenshot_unfallkarte.webp)
 
 
 ## Prerequisites
